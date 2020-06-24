@@ -51,7 +51,11 @@ function draw_game()
 	cls(0)
 	map(0)
 	palt(0, false) -- makes black non-transparent
-	spr(p_ani[flr(t/7)%4+1], p_x*8, p_y*8)
+	spr(
+		get_frame(p_ani), 
+		p_x*8, 
+		p_y*8
+	)
 end
 
 function draw_gameover()
@@ -60,6 +64,16 @@ end
 -->8
 --tools
 
+-- takes an array of animations
+-- and returns the next frame
+function get_frame(ani) 
+	-- #ani = length of ary
+	print(t)
+
+	return ani[
+		flr(t / 7) % #ani + 1
+	]
+end
 
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
