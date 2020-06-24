@@ -24,7 +24,18 @@ end
 --updates
 
 function update_game()
-	
+	if btnp(⬅️) then -- or 0
+		p_x -= 1
+	end
+	if btnp(➡️) then -- or 1
+		p_x += 1
+	end
+	if btnp(⬆️) then -- or 0
+		p_y -= 1
+	end
+	if btnp(⬇️) then -- or 0
+		p_y += 1
+	end	
 end
 
 function update_gameover()
