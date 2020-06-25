@@ -4,8 +4,10 @@ __lua__
 function _init()
 	t=0
 	p_ani={21,22,23,24}
+	
 	_upd=update_game
 	_drw=draw_game
+	
 	start_game()
 end
 
@@ -21,6 +23,8 @@ end
 function start_game()
 	p_x=2
 	p_y=5
+	p_ox=0 --player offset
+	p_oy=0
 end
 
 -->8
@@ -29,16 +33,42 @@ end
 function update_game()
 	if btnp(⬅️) then -- or 0
 		p_x -= 1
+		p_ox = 8
+		_upd=update_pturn
 	end
 	if btnp(➡️) then -- or 1
 		p_x += 1
+		p_ox = -8
+		_upd=update_pturn
 	end
 	if btnp(⬆️) then -- or 0
 		p_y -= 1
+		p_oy = 8
+		_upd=update_pturn
 	end
 	if btnp(⬇️) then -- or 0
 		p_y += 1
+		p_oy = -8
+		_upd=update_pturn
 	end	
+end
+
+function update_pturn()
+	if p_ox>0 then
+		p_ox-=1
+	end
+	if p_ox<0 then
+		p_ox+=1
+	end
+	if p_oy>0 then
+		p_oy-=1
+	end
+	if p_oy<0 then
+		p_oy+=1
+	end
+	if p_ox==0 and p_oy==0 then
+		_upd=update_game
+	end
 end
 
 function update_gameover()
@@ -49,12 +79,12 @@ end
 
 function draw_game()
 	cls(0)
-	map(0)
+	map()
 	
 	draw_spr(
 		get_frame(p_ani),
-		p_x*8,
-		p_y*8
+		p_x*8+p_ox,
+		p_y*8+p_oy
 	)
 end
 
