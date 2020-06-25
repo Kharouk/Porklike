@@ -50,10 +50,10 @@ end
 function draw_game()
 	cls(0)
 	map(0)
-	palt(0, false) -- makes black non-transparent
-	spr(
-		get_frame(p_ani), 
-		p_x*8, 
+	
+	draw_spr(
+		get_frame(p_ani),
+		p_x*8,
 		p_y*8
 	)
 end
@@ -68,11 +68,17 @@ end
 -- and returns the next frame
 function get_frame(ani) 
 	-- #ani = length of ary
-	print(t)
 
 	return ani[
 		flr(t / 7) % #ani + 1
 	]
+end
+
+function draw_spr(_spr,_x,_y,_c)
+	palt(0, false) -- makes black non-transparent
+	-- pal(6, _c) -- changes gray to input color
+	
+	spr(_spr,_x,_y)
 end
 
 __gfx__
