@@ -1,6 +1,7 @@
 pico-8 cartridge // http://www.pico-8.com
 version 27
 __lua__
+-- porklike jr. -- by ladsby
 function _init()
 	t=0
 	p_ani={21,22,23,24}
