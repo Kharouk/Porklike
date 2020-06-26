@@ -6,6 +6,9 @@ function _init()
 	t=0
 	p_ani={21,22,23,24}
 	
+	dirx={-1,1,0,0}
+	diry={0,0,-1,1}
+	
 	_upd=update_game
 	_drw=draw_game
 	
@@ -42,12 +45,12 @@ function update_game()
 		p_ox = -8
 		_upd=update_pturn
 	end
-	if btnp(⬆️) then -- or 0
+	if btnp(⬆️) then -- or 2
 		p_y -= 1
 		p_oy = 8
 		_upd=update_pturn
 	end
-	if btnp(⬇️) then -- or 0
+	if btnp(⬇️) then -- or 3
 		p_y += 1
 		p_oy = -8
 		_upd=update_pturn
